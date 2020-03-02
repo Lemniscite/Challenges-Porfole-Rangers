@@ -1,0 +1,9 @@
+Used 
+
+set()
+map()
+
+# Tetrahedral Number logic
+
+#Working with strings
+
