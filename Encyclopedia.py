@@ -1422,3 +1422,137 @@ print(max(cout),con_max)
 
  
 
+##14-3 Sat morning session
+'''Bubble Sort Problem
+
+You are given an array of N unsorted numbers. Your task is to write BUBBLE SORT such that numbers present in the array gets sorted.
+'''
+
+
+n = int(input())
+li = list(map(int,input().split()))
+temp =0
+
+for bling in range(n):
+    for z in range(n-1):
+        i = li[z]
+        if i>li[z+1]:
+            li[li.index(i)]= li[z+1]
+            li[z+1] = i
+       
+
+print(*li)
+
+
+'''
+Amit went down to the Samosa street to have some. But he only has K units of money with him. There are N shops on the street and unfortunately, all of them have only one samosa remaining. You are also given an array A, where Ai is the cost of a samosa on the i'th shop.
+
+Find the maximum samosas that Amit can eat.
+
+Input Format
+
+First line contains two space-separated integers N and K.
+
+Second line contains N space separated integers, the cost of a samosa on the shops.
+
+Constraints
+
+1 ≤ N ≤ 1000
+
+0 ≤ K ≤ 1000
+
+0 ≤ Ai ≤ 100
+
+Output Format
+
+Print the required answer
+
+Sample Input 0
+
+4 10
+5 4 2 4
+Sample Output 0
+
+3
+
+
+'''''
+
+ins = list(map(int,input().split()))
+
+cost = list(map(int,input().split()))
+cost.sort()
+balance = ins[1]
+maxs = 0
+for i in cost:
+    if balance>=i:
+        balance =balance- i
+        maxs+=1
+        
+    else:
+        break
+print(maxs)
+        
+		
+'''
+Hassan has discovered his own sorting algorithm. The algorithm has following conditions:
+
+Given an integer k, sort the values in the array according to their modulo with k. That is, if there are two integers a and b, and a%k < b%k, then a would come before b in the sorted array.
+
+If a%k = b%k, then the integer which comes first in the given array remains first in the sorted array.
+
+Your task is to write a program that sorts the given array as per above mentioned condition and print the sorted array.
+
+Input Format
+
+The first line consists of two integers N and k, N being the number of elements in the array and k is the number with which we need to take the modulo.
+
+The next line consists of N space separated integers , denoting the elements of the array A.
+
+Constraints
+
+N < 10000
+
+K < 1000000000
+
+Integers of array < 10000000000
+
+Output Format
+
+Print the modulo sorted array of the given array.
+
+Sample Input 0
+
+5 6
+12 18 17 65 46
+Sample Output 0
+
+12 18 46 17 65
+Explanation 0
+
+12%6=0
+18%6=0
+17%6=5
+65%6=5
+46%6=4
+So, the sorted order is: 12 18 46 17 65
+12 and 18 have same result on modulo , so, 12 remains first in sorted array as it is first in given array
+'''
+
+ins = list(map(int,input().split()))
+li = list(map(int,input().split()))
+n = ins[0]
+k = ins[1]
+
+
+for bling in range(n):
+    for z in range(n-1):
+        i = li[z]
+        if i%k>li[z+1]%k:
+            li[li.index(i)]= li[z+1]
+            li[z+1] = i
+        
+            
+       
+
+print(*li)
