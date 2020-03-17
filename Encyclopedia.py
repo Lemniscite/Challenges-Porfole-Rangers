@@ -1558,4 +1558,33 @@ for bling in range(n):
 print(*li)
 
 
+##17-3
+
+''' Even Sub Arrays
+You are given an array A of N elements. Write a program that counts the number of sub-arrays of A in which sum of all the elements is an even number.
+'''
+
+n = int(input())
+arr = list(map(int,input().split()))
+##Optimised Alg
+
+cnt_odd = 0
+cnt_even =1
+sumi = 0
+count = 0
+
+
+
+for i in range( n): 
+
+    
+    sumi =  sumi + arr[i]
+    if sumi%2 ==0:
+        cnt_even+=1
+    else:
+        cnt_odd+=1
+
+
+count = cnt_odd*(cnt_odd-1)/2 +cnt_even*(cnt_even-1)/2 
+print(int(count))
 
