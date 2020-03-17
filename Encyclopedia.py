@@ -1558,7 +1558,7 @@ for bling in range(n):
 print(*li)
 
 
-##17-3
+##16-3
 
 ''' Even Sub Arrays
 You are given an array A of N elements. Write a program that counts the number of sub-arrays of A in which sum of all the elements is an even number.
@@ -1588,3 +1588,173 @@ for i in range( n):
 count = cnt_odd*(cnt_odd-1)/2 +cnt_even*(cnt_even-1)/2 
 print(int(count))
 
+##17-3
+'''
+There is a stack of integers which is currently empty. You are given an integer n and there are n operations that you need to perform on the stack.
+
+The next n line contains one of the following 3 operations:
+
+1 x : Push x to the top of the stack.
+
+2 : Pop an element from the top of the stack. If the stack is empty, do nothing.
+
+3 : Print the top element of the stack (if stack is empty, print "Empty!" (without quotes)).
+
+For better understanding, read sample test case explanation
+
+Input Format
+
+First line of test case contains n.
+
+In the next n lines there can be one of the following three possible inputs:
+
+1 separated by an integer: In that case, you have to push that integer to stack
+
+2 : Pop an element from the top of the stack. If the stack is empty, do nothing.
+
+3 : Print the top element of the stack (see Output Format).
+
+Constraints
+
+N<1000
+
+Output Format
+
+Whenever the query (out of the n queries) is 3, print top element of stack.
+
+Sample Input 0
+
+6
+1 15
+1 20
+2
+3
+2
+3
+Sample Output 0
+
+15
+Empty!
+Explanation 0
+
+There are 6 different operations to be performed on the stack.
+In first operation, we are pushing 15 to the stack
+In second operation, we are pushing 20 to the stack
+In third operation, we are popping (removing) 20 from the stack.
+In fourth operation, we have to print the top element and since stack is not empty and has 15 at the top. Print 15.
+
+In fifth operation, we are popping the top element from the stack and since there is just one element present in the stack, the stack will become empty after performing this operation.
+
+In sixth operation, you have to print the top element and since the stack is already empty, output "Empty!"
+'''
+
+n = int(input())
+stack=[]
+result=[]
+def operations(stack,op):
+    if len(op)>1:
+        i = op[0]
+        ele = op[1]
+    else:
+        i = op[0]
+        
+    
+    if i== 1:
+        result.append(ele)
+    elif i==2:
+        if len(result)>0:
+            result.pop()
+        
+    else:
+        if len(result)>0:
+            print(result[len(result)-1])
+        else:
+            print("Empty!")
+for i in range(n):
+    stack.append(list(map(int,input().split())))
+    
+    
+for i in stack:
+    operations(stack,i)
+    
+
+ '''
+ You love food. Hence,you took up position of a manager at Masai restaurant that serves people with delicious food packages. It is a very famous place and people are always queuing up to have one of those packages. Each package has a cost associated with it. The packages are kept as a pile. The job of a manager is very difficult. You need to handle two types of queries:
+
+1) Customer Query: When a customer demands a package, the food package on the top of the pile is given and the customer is charged according to the cost of the package. This reduces the height of the pile by 1. In case the pile is empty, the customer goes away empty-handed.
+
+2) Chef Query: The chef prepares a food package and adds it on top of the pile. And reports the cost of the package to the Manager. Help him manage the process.
+
+Input Format
+
+First line contains an integer Q, the number of queries. Next Q lines follow.
+
+A Type-1 ( Customer) Query, is indicated by a single integer 1 in the line.
+
+A Type-2 ( Chef) Query, is indicated by two space separated integers 2 and C (cost of the package prepared) .
+
+Constraints
+
+Q<100
+
+C<1000
+
+Output Format
+
+For each Type-1 Query, output the price that customer has to pay i.e. cost of the package given to the customer in a new line. If the pile is empty, print "No Food" (without quotes).
+
+Sample Input 0
+
+6
+1
+2 5
+2 7
+2 9
+1
+1
+Sample Output 0
+
+No Food
+9
+7
+Explanation 0
+
+Initially, The pile is empty.
+Chef adds a package with cost=5.
+Chef adds a package with cost=7.
+Chef adds a package with cost=9.
+Customer takes the package on the top i.e. cost=9. Now package of cost=7 on top.        
+Customer takes the package on the top i.e. cost=7.
+'''
+n = int(input())
+stack=[]
+result=[]
+def operations(stack,op):
+    if len(op)>1:
+        i = op[0]
+        ele = op[1]
+    else:
+        i = op[0]
+        
+    
+    if i== 2:
+        result.append(ele)
+    elif i==1:
+        if len(result)>0:
+            
+            x= result.pop()
+            print(x)
+        
+        
+    else:
+        if len(result)>0:
+            print(result[len(result)-1])
+        else:
+            print("Empty!")
+for i in range(n):
+    stack.append(list(map(int,input().split())))
+    
+    
+for i in stack:
+    operations(stack,i)
+    
