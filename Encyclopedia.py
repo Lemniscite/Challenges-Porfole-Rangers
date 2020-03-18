@@ -1758,3 +1758,148 @@ for i in range(n):
 for i in stack:
     operations(stack,i)
     
+##18-3
+
+
+
+
+'''
+New Year Celebration is coming near and DG is hosting a party for it, To make sure the party goes well she wants order in the party.There are two counters one of ice-cream and other for Cold-drinks.
+On ice-cream counter the line was formed in form of Queue and on drinks counter the line was formed in order of Stacks.
+
+She gave the management of the party to NV, NV made a plan to ask the manager following types of query.
+Query types:
+1 X : Number X enter the Queue. 
+2 X : Number X enter the Stack.
+3   : Output whoever is in-front of the queue.
+4   : Output whoever is on-top of the stack
+5   : Which person is in-front of queue get out of queue and enters the stack.
+Note: If the Queue or Stack is empty then output "-1"
+
+Input Format
+
+The first line of input will contain Q, which is the number queries.
+
+The next Q lines will different queries based upon query types given.
+Constraints
+
+1<=Q<=10^5
+
+1<=X<=10^9
+
+Output Format
+
+Output will consist of integers based upon Query types.If Query type is 3 then Output whoever is in-front of the queue, if Query type is 4 Output whoever is on-top of the stack
+
+
+Sample Input 0
+
+7
+1 4
+2 3
+1 2
+3
+4
+5
+4
+'''
+n = int(input())
+
+stk =[]# stack LIFO
+q = []#queue FIFO
+
+while n >0:
+    ins = input().split()
+    
+    if ins[0]=='2':
+#stk.append(ins[1])
+        stk.insert(0,ins[1])
+        
+    elif ins[0]=='1':
+        q.append(ins[1])
+
+    
+    elif ins[0]=='4':
+        print(stk [0])
+    
+    elif ins[0]=='3':
+        print(q[0])
+
+    else: ##'5'
+        front_q = q.pop(0)
+        stk.insert(0,front_q)
+        
+        
+    
+    n-=1
+
+
+
+''''
+Given a string of lowercase characters in range ascii[‘a’..’z’]. You can perform one operation on this string in which you can selects a pair of adjacent lowercase letters that match, and delete them.
+
+For instance, the string aab could be shortened to b in one operation.
+
+Your task is to delete as many characters as possible using this method and print the resulting string. If the final string is empty, print "Empty String" (without quotes).
+
+Please note that characters can be deleted only if they form a pair and are same(i.e from aaa we can only delete 2 a's and will be left with a single a).
+
+I know there exists a simple implementation based solution of this question, but please try to come up with an approach that uses stack data structure to solve the purpose
+
+Input Format
+
+First and the only line contains string
+
+Constraints
+
+Length of string < 1000
+
+Output Format
+
+If the final string is empty, print Empty String; otherwise, print the final non-reducible string.
+
+Sample Input 0
+
+aaabccddd
+Sample Output 0
+
+abd
+Explanation 0
+
+You can perform the following sequence of operations to get the final string:
+
+aaabccddd -> abccddd -> abddd -> abd
+
+'''
+
+
+i = input()
+stack = []
+
+for y in i:
+    stack.append(y)
+    
+    
+
+for i in stack:
+    
+    if i==stack[stack.index(i)+1]:
+        
+        stack.remove(i) # pop just doesn't work
+        stack.remove(i)
+        
+        
+        
+    
+string =""
+
+for i in stack:
+    string+=i
+             
+               
+            
+    
+print(string)
+    
+  
+
