@@ -1903,3 +1903,194 @@ print(string)
     
   
 
+## 19-3
+'''
+Left Rotation
+
+A left rotation operation on an array of size  shifts each of the array's elements  unit to the left. For example, if  left rotations are performed on array , then the array would become .
+
+Given an array of  integers and a number, , perform  left rotations on the array. Then print the updated array as a single line of space-separated integers.
+
+Input Format
+
+The first line contains two space-separated integers denoting the respective values of  (the number of integers) and  (the number of left rotations you must perform).
+The second line contains  space-separated integers describing the respective elements of the array's initial state.
+
+Constraints
+
+Output Format
+
+Print a single line of  space-separated integers denoting the final state of the array after performing  left rotations.
+
+Sample Input
+
+5 4
+1 2 3 4 5
+Sample Output
+
+5 1 2 3 4
+Explanation
+
+When we perform  left rotations, the array undergoes the following sequence of changes:
+
+Thus, we print the array's final state as a single line of space-separated values, which is 5 1 2 3 4.
+
+'''
+
+n,d = list(map(int,input().split())) 
+li = list(map(int,input().split())) 
+
+def op(l):
+    z=l.pop(0)
+    l.append(z)
+    
+
+for i in range(d):
+    op(li)
+print(*li)
+    
+'''
+Signal's Capacity
+
+There are many signal towers present in Bangalore.Towers are aligned in a straight horizontal line(from left to right) and each tower transmits a signal in the right to left direction.
+
+Tower X shall block the signal of Tower Y if Tower X is present to the left of Tower Y and Tower X is taller than Tower Y. So,the power of a signal of a given tower can be defined as :
+
+{(the number of contiguous towers just to the left of the given tower whose height is less than or equal to the height of the given tower) + 1}.
+
+You need to write a program that finds the power of each tower.
+
+Input Format
+
+Each test case has multiple test cases in it:
+
+First line contains an integer specifying the number of test cases.
+
+Second line contains an integer n specifying the number of towers.
+
+Third line contains n space separated integers(H[i]) denoting the height of each tower.
+
+Constraints
+
+1 <= T <= 10
+
+2 <= n <= 10^6
+
+1 <= H[i] <= 10^8
+
+Output Format
+
+Print the range of each tower (separated by a space).
+
+Sample Input 0
+
+2
+7
+100 80 60 70 60 75 85
+5
+3 5 0 9 8
+Sample Output 0
+
+1 1 1 2 1 4 6
+1 2 1 4 1
+Explanation 0
+
+There are 2 test case:
+
+In first test case:
+7 towers are present, and signal range of each tower separated by space:1 1 1 2 1 4 6
+
+Similarly,
+In second test case, we have 5 towers whose signal range is given
+
+'''
+
+
+
+### Appl of queue and stack
+n_test = int(input())
+li = []
+result=[]
+def cnt(l,i): # ith index
+    ct = 1
+    st = l[0:i]
+    st.reverse()
+    while len(st)>0 and st[0]<=l[i]:
+        ct+=1
+        st.pop(0)
+           
+    
+    return ct
+for i in range(n_test):
+    n_tower =int(input())
+    h = list(map(int,input().split()))
+    ans=[]
+    for i in range(len(h)):
+        ans.append(cnt(h,i))  
+    print(*ans)
+
+'''
+
+Smaller Neighbour Element
+(Very Imp*)
+  
+Given an array, find the nearest smaller element G[i] for every element A[i] in the array such that the element has an index smaller than i.
+
+Mathematically,
+
+G[i] for an element A[i] is an element A[j] such that 
+    j is maximum possible AND 
+    j < i AND
+    A[j] < A[i]
+Note: Elements for which no smaller element exist, consider next smaller element as -1.
+
+Input Format
+
+First line contains an integer N denoting the number of elements in the array (not necessarily distinct).
+
+Second line contains N space separated integers denoting the elements of the array.
+
+Constraints
+
+N < 100000
+
+Output Format
+
+Print N space separated integers denoting the array G.
+
+Sample Input 0
+
+8
+39 27 11 4 24 32 32 1
+Sample Output 0
+
+-1 -1 -1 -1 4 24 24 -1
+
+
+
+'''
+n = int(input())
+l = list(map(int,input().split()))
+
+
+def cnt(l,i): # ith index
+    
+    st = l[0:i]
+    st.reverse()
+    z=0
+    
+    while len(st)>0 and st[0]>=l[i]:
+        st.pop(0)
+        
+    if len(st)==0:
+        z = -1
+    else:
+        z = st[0]
+    return z
+ans=[]   
+for i in range(n):
+    
+    ans.append(cnt(l,i))  
+print(*ans)      
+    
+        
