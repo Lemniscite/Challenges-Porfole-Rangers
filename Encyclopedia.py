@@ -2284,4 +2284,73 @@ for i in o:
     
         
     
+## 21-3 Sat
+'''
+You are given N which is the number of different types of operation you need to perform on a stack. There are 3 different types of operations:
 
+PUSH V: Here V is an integer which you need to push in the stack
+
+POP: Here POP out the top element from stack. (In case stack is empty print "EMPTY")
+
+MIN: Print the minimum value present in the stack
+
+Input Format
+
+First line contains N which is the number of operations you need to perform on stack
+
+Next N line contains one of the 3 operations mentioned above
+
+Constraints
+
+N < 1000000
+
+V < 100
+
+Output Format
+
+The output consists of a line containing an integer with the smallest present value in the stack for queries of type "MIN" or "EMPTY" for "MIN" and "POP" operations when the stack is empty.
+
+Sample Input 0
+
+11
+PUSH 5
+PUSH 7
+PUSH 3
+PUSH 8
+PUSH 10
+MIN
+POP
+POP
+MIN
+POP
+MIN
+Sample Output 0
+
+3
+3
+5
+'''
+
+
+
+n = int(input())
+s = []
+
+
+for i in range(n):
+    li=input().split()
+    
+    if li[0]=='PUSH':
+        s.insert(0,int(li[1]))
+    
+    elif li[0]== 'POP':
+        if len(s)>0:
+                 s.pop(0)
+        else:
+                 print("Empty")
+    
+        
+    else:
+        print(min(s))
+        
+ 
