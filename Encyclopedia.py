@@ -2093,4 +2093,195 @@ for i in range(n):
     ans.append(cnt(l,i))  
 print(*ans)      
     
+## 20-3
+
+'''
+Smaller Neighbour Element
+
+Given an array, find the nearest smaller element G[i] for every element A[i] in the array such that the element has an index smaller than i.
+
+Mathematically,
+
+G[i] for an element A[i] is an element A[j] such that 
+    j is maximum possible AND 
+    j < i AND
+    A[j] < A[i]
+Note: Elements for which no smaller element exist, consider next smaller element as -1.
+
+Input Format
+
+First line contains an integer N denoting the number of elements in the array (not necessarily distinct).
+
+Second line contains N space separated integers denoting the elements of the array.
+
+Constraints
+
+N < 100000
+
+Output Format
+
+Print N space separated integers denoting the array G.
+
+Sample Input 0
+
+8
+39 27 11 4 24 32 32 1
+Sample Output 0
+
+-1 -1 -1 -1 4 24 24 -1
+
+'''
+## Sir's optimised O(n) method
+n = int(input())
+l = list(map(int,input().split()))
+st = [l[0]]
+
+ans = [-1]
+## Logic is almost same but we are keeping the track of the successful elements(meaning min elements) in the stack
+for i in range(1,n):
+    
+    while len(st)!= 0 and st[0]>=l[i]:
+        st.pop(0)
+    if len(st)==0:
+        ans.append(-1)
         
+    else:
+        ans.append(st[0])
+    st.insert(0,l[i])    
+    
+print(*ans)
+
+
+
+        
+'''
+Mark and Competition
+
+You have the marks of students in the form of an array, where arr[i] represents the marks of the ith student.
+
+Since you are a curious kid, you want to find all the marks that are not smaller than those on its right side in the array.
+
+Input Format
+
+The first line of input will contain a single integer n denoting the number of students.
+
+The next line will contain n space separated integers representing the marks of students.
+
+Constraints
+
+1 <= n <= 1000000
+
+0 <= arr[i] <= 10000
+
+Output Format
+
+Output all the integers separated in the array from left to right that are not smaller than those on its right side.
+
+Sample Input 0
+
+6
+16 17 4 3 5 2
+Sample Output 0
+
+17 5 2
+Explanation 0
+
+17, 5 and 2 are three integers present in the list which has no integers greater than it to its right (all the integers present in right of it)
+
+'''
+
+n = int(input())
+q= list(map(int,input().split()))
+ ## q - enque - append() deq - .pop(0)
+    
+## Take it a reverse way
+q.reverse()
+ans = [q[0]]
+st_max = q[0]
+for i in range(1,n):
+    if q[i]>=st_max:
+        ans.append(q[i])
+        st_max = q[i]
+        
+ans.reverse()
+print(*ans)
+    
+
+
+'''Masai Coding Competition
+There is a coding Tournament where 4 clubs are going to compete. Since the team selection is very critical in this competition,Rohit asked Harshit to help him in the team selection process.
+
+There is a long queue of students from four clubs. Each student of a club have a different roll number. Whenever a new student will come, he will search for his clubmate from the end of the queue. As soon as he will find any of the club-mate in the queue, he will stand behind him, otherwise he will stand at the end of the queue. At any moment Harshit will ask the student, who is standing in front of the queue, to come and give his name and Harshit will remove him from the queue. There are Q operations of one of the following types:
+
+E a b: A new student of club a whose roll number is b will stand in queue according to the method mentioned above.
+
+D: Harshit will ask the student, who is standing in front of the queue, to come and put his name and Harshit will remove him from the queue
+
+Input Format
+
+First line contains an integer Q denoting the number of operations.
+
+Next Q lines will contains one of the 2 types of operations.
+
+Constraints
+
+Number of dequeue operations will never be greater than enqueue operations at any point of time.
+
+1<=Q<=100000
+
+1<=a<=4
+
+1<=b<=50000
+
+Output Format
+
+For each 2nd (D) type of operation, print two space separated integers, the front student's club and roll number.
+
+Sample Input 0
+
+5
+E 1 1
+E 2 1
+E 1 2
+D
+D
+Sample Output 0
+
+1 1
+1 2
+
+'''
+    
+
+n = int(input())
+q=[]
+o=[]
+for i in range(n):
+    l =input().split()
+    if l[0]=='D':
+        o.append(l[0])
+    else:
+        o.append(l[0])
+        q.append([int(l[1]),int(l[2])])
+for i in o:
+    if i == 'E':
+        top = q.pop(0)
+        club = top[0]
+        for i in range(len(q)-1):
+            if q[0][i]==top[0]:
+                q.insert(q[0][i+1],top)
+            else:
+                q.append(top)
+                
+           
+        
+        
+    else:
+        z = q.pop(0)
+        print(*z)
+
+    
+    
+        
+    
+
