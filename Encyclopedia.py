@@ -2495,6 +2495,183 @@ for i in range(n):
 		if club_index[z[0]]!=0:
 			club_index[z[0]]-=1
 			
+
+
+'''
+Factorial
+
+The factorial of a positive integer N is the product of all positive integers less than or equal to n:
+
+Given a number N, your task is to write a program that calculates factorial of N.
+
+Input Format
+
+First and the only line contains N
+
+Constraints
+
+N<15
+
+Output Format
+
+Output the factorial value of N
+
+Sample Input 0
+
+5
+Sample Output 0
+
+120
+Explanation 0
+
+Factorial of 5 = 5*4*3*2*1 = 120
+'''
+
+import math
+n = int(input())
+
+print(math.factorial(n))
+
+'''
+Nth Fibonnaci'''
+
+n = int(input())
+
+temp = 0
+temp_1 = 1
+
+for i in range(n-1):
+    nth = temp+temp_1
+    temp=temp_1
+    temp_1=nth
+
+print(nth)
+
+'''
+
+Side lane - actual sir ans'''
+
+while True:
+    n = int(input())
+    if n ==0:
+        break
+    else:
+        numbers= list(map(int,input().split()))
+        need = 1
+        flag = "yes"
+        s =[]
+        for num in numbers:
+            while len(s)!=0 and s[-1]==need:
+                s.pop()
+                need+=1
+            if num==need:
+                need+=1
+            elif len(s)!=0 and s[-1]<num:
+                flag = "no"
+                break
+            else:
+                s.append(num)
+        print(flag)
+                
+                
+        
+'''
+Again a classical prob 
+
+A bracket is considered to be any one of the following characters: (, ), {, }, [, or ].
+
+Two brackets are considered to be a matched pair if the an opening bracket (i.e., (, [, or {) occurs to the left of a closing bracket (i.e., ), ], or }) of the exact same type. There are three types of matched pairs of brackets: [], {}, and ().
+
+A matching pair of brackets is not balanced if the set of brackets it encloses are not matched. For example, {[(])} is not balanced because the contents in between { and } are not balanced. The pair of square brackets encloses a single, unbalanced opening bracket, (, and the pair of parentheses encloses a single, unbalanced closing square bracket, ].
+
+By this logic, we say a sequence of brackets is balanced if the following conditions are met:
+
+It contains no unmatched brackets.
+
+The subset of brackets enclosed within the confines of a matched pair of brackets is also a matched pair of brackets.
+Given a string, you have to comment if it is balanced or not
+
+Input Format
+
+First line of input contains t which is the number of test cases present in the question
+
+Each test case has a string
+
+Constraints
+
+t < 100
+
+length of string < 100
+
+Output Format
+
+Print "balanced" if the string is balanced, otherwise print "not balanced" in case the string is not balanced
+
+Sample Input 0
+
+3
+{([])}
+()
+([]
+Sample Output 0
+
+balanced
+balanced
+not balanced
+
+
+
+'''
+
+n = int(input())
+
+dicte={'{':'}','(':')','[':']'}
+
+i=0
+def get_key(val): 
+    for key, value in dicte.items(): 
+         if val == value: 
+             return key 
+while i<n:
+    
+    l = input()   
+    s = []
+    
+    flag = "balanced"
+    for k in l:     
+        if len(l)%2!=0:
+            
+            flag ="not balanced"
+            
+            
+        
+        if k in dicte.keys():
+            
+            s.insert(0,k)
+            
+        else:
+            
+   
+            if len(s)>0 and k == dicte[s[0]]:
+                s.pop(0)
+            else:
+                flag="not balanced"
+                break 
+            
+    if len(s)!=0:
+        flag="not balanced"
+   
+            
+    print(flag)
+    
+    i+=1
+    
+    
+    
+    
+            
+
+			
 		
         
         
