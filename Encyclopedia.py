@@ -563,7 +563,7 @@ answer = list(map(board,lug,hand))
 You are given an integer N. Your task is to find if the string 420 is present in it or not.
 
 Print "Caught" (without quotes) if 420 is present in it. Otherwise "Escaped" (without quotes) if 420 is not present in it.
-
+\
 Input Format
 
 You are provided an integer N.
@@ -2353,4 +2353,159 @@ for i in range(n):
     else:
         print(min(s))
         
+''' Use Side Lane'''
+
+n = int(input())
+l = list(map(int,input().split()))
+
+s = []
+q1=l
+q2=[]
+exp = 1
+while exp<n+1:
+    for i in q1:
+
+
+
+        if i == exp: # It crosses 
+            q2.append(i)   
+            exp+=1
+        elif len(s)>0 and exp==s[0]: #It enter the lane from stack
+            z = s.pop(0)
+            q2.append(z)
+            exp+=1
+            s.insert(0,i)  ## Really missed this line is crucial spend hr
+
+        else:        
+            s.insert(0,i)
+
+
+out = q2+s
+
+l.sort()
+
+
+if l ==q2:
+    print("yes")
+else:
+    print("no")
+    
+    
+     
+## 23-3
+
+
+'''
+Use Side Lane
+
+
+There are N trucks numbered from 1 to N. The trucks are coming on a road in a random manner.(by random, it means that any order of number: not sorted) There is a side lane which can be used to order the sequence of truck properly(1,2,3,..N)
+
+Use these images for better understanding of sample test case.
+
+If it is possible to achieve using the side land, print "yes" else print "no"
+
+Input Format
+
+There are several test cases. The first line of each test case contains a single number n, the number of trucks.
+
+The second line contains the numbers 1 to n in an arbitrary order. All the numbers are separated by single spaces. These numbers indicate the order in which the trucks arrive in the approach street.
+
+Input ends with number 0.
+
+Constraints
+
+N < 1000
+
+Output Format
+
+For each test case your program has to output a line containing a single word "yes" if the trucks can be re-ordered with the help of the side lane, and a single word "no" in case it is not possible.
+
+Sample Input 0
+
+5
+5 1 2 4 3 
+0
+Sample Output 0
+
+yes
+
+'''
+
+n = int(input())
+l = list(map(int,input().split()))
+
+s = []
+q1=l
+q2=[]
+exp = 1
+
+for i in q1:
+    
+    
+
+    if i == exp: # It crosses 
+        q2.append(i)   
+        exp+=1
+    elif len(s)>0 and exp==s[0]: #It enter the lane from stack
+        z = s.pop(0)
+        q2.append(z)
+        exp+=1
+        s.insert(0,i)  ## Really missed this line is crucial spend hr
+        
+    else:        
+        s.insert(0,i)
+        
+
+
+out = q2+s
+
+l.sort()
+
+
+if l ==out:
+    print("yes")
+else:
+    print("no")
+    
+## 23-2
+
+ '''Masai Coding Competition'''
  
+n = int(input())
+q=[]
+o=[]
+club_index = {1:0,2:0,3:0,4:0}
+for i in range(n):
+    l =input().split()
+    if l[0]=='E':
+        stu = l[0]
+        club,roll = int(l[1]),int(l[2])
+        last_index = club_index[club]
+        if last_index==0:
+            q.append([club,roll])
+            club_index[club]=len(q)
+        else:
+            q.insert(last_index,[club,roll])
+            club_index[club]+=1
+        
+    else:
+        z=q.pop(0)
+        print(*z)
+		if club_index[z[0]]!=0:
+			club_index[z[0]]-=1
+			
+		
+        
+        
+        
+        
+
+
+ 
+
+        
+        
+
+
+    
