@@ -2667,8 +2667,69 @@ while i<n:
     i+=1
     
     
+'''
+##24-3
+
+Sandhya is running up a staircase with N steps, and can hop(jump) either 1 step, 2 steps or 3 steps at a time. You have to count, how many possible ways Sandhya can run up to the stairs.
+Input Format
+
+Input contains integer N that is number of steps
+Constraints
+
+N <= 30
+Output Format
+
+ Output for each integer N the no of possible ways w.
+Sample Input 0
+
+4
+Sample Output 0
+
+7
+
+
+'''
+
+n=int(input())
+def fi(n) : 
+    if (n == 1 or n == 0) : 
+        return 1
+    elif (n == 2) : 
+        return 2
+      
+    else : 
+        return fi(n - 3) + fi(n - 2) + fi(n - 1)
+print(fi(n))
+
+'''
+Fibonacci-Recursion
+
+n =int(input())
+fib = [0,1]
+z=n+1
+count=0
+def fibr(n):
     
+    if len(fib)==z:
+        return 1
+    else:
+        return fib.append(fib[len(fib)-1]+fib[len(fib)-2]),fibr(len(fib))
+fibr(n)
+print(fib[n])
     
+'''
+'''
+Factorial Recursion
+
+n = int(input())
+def fact(n):
+    if n==0:
+        return 1
+    else:   
+        return n*fact(n-1)
+print(fact(n))
+
+'''    
             
 
 			
@@ -2685,4 +2746,9 @@ while i<n:
         
 
 
-    
+
+
+
+
+
+
