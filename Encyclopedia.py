@@ -2703,24 +2703,23 @@ print(fi(n))
 
 '''
 Fibonacci-Recursion
-
-n =int(input())
-fib = [0,1]
-z=n+1
-count=0
-def fibr(n):
-    
-    if len(fib)==z:
+'''
+n=int(input())
+s = [1,0]
+def fib(n):
+    if n==0:
         return 1
     else:
-        return fib.append(fib[len(fib)-1]+fib[len(fib)-2]),fibr(len(fib))
-fibr(n)
-print(fib[n])
+        sum = s[0]+s[1]
+        s.insert(0,sum)
+        return fib(n-1)
+fib(n)
+print(s[0])
     
-'''
+
 '''
 Factorial Recursion
-
+'''
 n = int(input())
 def fact(n):
     if n==0:
@@ -2729,7 +2728,9 @@ def fact(n):
         return n*fact(n-1)
 print(fact(n))
 
-'''    
+'''
+
+    
             
 
 			
