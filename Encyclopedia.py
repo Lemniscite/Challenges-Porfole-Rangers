@@ -2729,6 +2729,23 @@ def fact(n):
 print(fact(n))
 
 '''
+Sum of elements in array - simplified
+'''
+li=[1,3,46,6]
+
+def f(p,n):
+    if n==0:
+        return
+    return p[n-1]+p[n-2]
+    
+print(f(li,len(li)))
+
+'''
+Vowels '''
+
+v = ['a','e','i','o','u']
+
+def vow(s):
 
     
             
