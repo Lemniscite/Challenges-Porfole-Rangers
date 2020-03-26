@@ -2333,25 +2333,7 @@ Sample Output 0
 
 
 
-n = int(input())
-s = []
 
-
-for i in range(n):
-    li=input().split()
-    
-    if li[0]=='PUSH':
-        s.insert(0,int(li[1]))
-    
-    elif li[0]== 'POP':
-        if len(s)>0:
-                 s.pop(0)
-        else:
-                 print("Empty")
-    
-        
-    else:
-        print(min(s))
         
 ''' Use Side Lane'''
 
@@ -2729,6 +2711,7 @@ def fact(n):
 print(fact(n))
 
 '''
+25-3
 Sum of elements in array - simplified
 '''
 li=[1,3,46,6]
@@ -2741,32 +2724,239 @@ def f(p,n):
 print(f(li,len(li)))
 
 '''
-Vowels '''
+No of steps'''
 
-v = ['a','e','i','o','u']
-
-def vow(s):
-
+n=int(input())
+def fi(n) : 
+    if n<=0:
+        return 0
+   
+    elif n==1:
+        return 1
     
+    elif n==3:
+        return 2
+    elif n==4:
+        return 4
+    else:
+        return fi(n-3)+fi(n-4)+fi(n-1)
+    
+
+print(fi(n))
+    
+'''
+https://www.hackerrank.com/contests/cohort-5-module-1-4-1-3/challenges/different-ways-as-a-sum
+
+Ways sum
+
+Let us say that you are given a number N, you've to find the number of different ways to write it as the sum of 1, 3 and 4.
+
+For example, if N = 5, the answer would be 6.
+
+1 + 1 + 1 + 1 + 1
+1 + 4
+4 + 1
+1 + 1 + 3
+1 + 3 + 1
+3 + 1 + 1
+Input Format
+
+First and the only line contains the value of N
+
+Constraints
+
+N <= 50
+
+Output Format
+
+Output the number of ways
+
+Sample Input 0
+
+5
+Sample Output 0
+
+6
+'''
+
+n=int(input())
+def fi(n) : 
+    if n<=0:
+        return 0
+   
+    elif n==1:
+        return 1
+    
+    elif n==3:
+        return 2
+    elif n==4:
+        return 4
+    else:
+        return fi(n-3)+fi(n-4)+fi(n-1)
+    
+
+print(fi(n))
+    
+   
             
+'''
+https://www.hackerrank.com/contests/cohort-5-module-1-4-1-3/challenges/perform-merging/problem
 
-			
-		
+Merging
+
+	
+	You are given two sorted arrays each of length N. Your task is to write a program that merges both the arrays such that the final array formed after merging is sorted.
+
+Note: You must not use sort() function in your entire code.
+
+Input Format
+
+First line contains N which is the number of integers present in both the arrays.
+
+Second line contains N sorted integers which are elements of first array.
+
+Third line contains N sorted integers which are elements of second array.
+'''   
+        
+    
+
+        
+n = int(input())
+l1= list(map(int,input().split()))
+l2= list(map(int,input().split()))
+ls=[]
+def sort(n,l1,l2,ls):
+    
+    if n<=0:
+        return ls
+    
+    
+    if l1[n-1]>l2[n-1]:
+        
+        ls.insert(0,l2[n-1])
+        ls.insert(1,l1[n-1])
+        
+    
+        
+        return sort(n-1,l1,l2,ls)
+    
+    
+        
+    else:
+        ls.insert(0,l1[n-1])
+        ls.insert(1,l2[n-1])
+        return sort(n-1,l1,l2,ls)
+            
+print(*sort(n,l1,l2,ls))        
+
+'''Just find minimum
+You are given N which is the number of different types of operation you need to perform on a stack. There are 3 different types of operations:
+
+PUSH V: Here V is an integer which you need to push in the stack
+
+POP: Here POP out the top element from stack. (In case stack is empty print "EMPTY")
+
+MIN: Print the minimum value present in the stack
+
+Input Format
+
+First line contains N which is the number of operations you need to perform on stack
+
+Next N line contains one of the 3 operations mentioned above
+
+'''
+
+n = int(input())
+s=[]
+mins=99
+for i in range(n):
+    l = input().split()
+    if l[0]=="PUSH":
+        
+        mins = min(mins,int(l[1]))
+        s.insert(0,(int(l[1]),mins))
         
         
+    elif l[0]=="POP":
+        if len(s)==0:
+            print("EMPTY")
         
+        else:
+            s.pop(0)
+            
+    else:
+        print(int(s[0][1]))
         
+'''
+
+Perform Merging
 
 
- 
+You are given two sorted arrays each of length N. Your task is to write a program that merges both the arrays such that the final array formed after merging is sorted.
 
+Note: You must not use sort() function in your entire code.
+
+Input Format
+
+First line contains N which is the number of integers present in both the arrays.
+
+Second line contains N sorted integers which are elements of first array.
+
+Third line contains N sorted integers which are elements of second array.
+
+Constraints
+
+N < 1000
+
+Output Format
+
+Output the array formed after merging elements such that it is sorted
+
+Sample Input 0
+
+4
+1 5 7 9
+2 4 6 8
+Sample Output 0
+
+1 2 4 5 6 7 8 9
+
+''''		
+
+
+
+
+
+
+n = int(input())
+l1= list(map(int,input().split()))
+l2= list(map(int,input().split()))
+ls=[]
+def sort(l1,l2):
+    
+    i,j=0,0
+    
+    if i==len(l1):
+        return ls+l2
+    elif j==len(l2):
+        return ls+l1
+    
+    
+    if l1[i]<l2[j]:
         
+        z = l1.pop(0)
+        i+=1
+        ls.append(z)
+        return sort(l1,l2)
         
+    
+    else:
+        h = l2.pop(0)
+        j+=1
+        ls.append(h)
+        return sort(l1,l2)
+    
 
-
-
-
-
-
+print(*sort(l1,l2))        
 
 
