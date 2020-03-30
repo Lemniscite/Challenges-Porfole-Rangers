@@ -2880,9 +2880,13 @@ for i in range(n):
     elif l[0]=="POP":
         if len(s)==0:
             print("EMPTY")
+			mins=99
+		
         
         else:
             s.pop(0)
+			mins=s[0][1]
+		
             
     else:
         print(int(s[0][1]))
@@ -3035,3 +3039,64 @@ l = list(map(int, input().split()))
 print(*merge_sort(l))
 
 
+##30-3
+
+'''https://www.hackerrank.com/contests/cohort-5-module-1-4-2-1/challenges/maximum-element/problem
+
+You have an empty sequence, and you will be given  queries. Each query is one of these three types:
+
+1 x  -Push the element x into the stack.
+2    -Delete the element present at the top of the stack.
+3    -Print the maximum element in the stack.
+Input Format
+
+The first line of input contains an integer, . The next  lines each contain an above mentioned query. (It is guaranteed that each query is valid.)
+
+Constraints
+
+
+
+Output Format
+
+For each type  query, print the maximum element in the stack on a new line.
+
+Sample Input
+
+10
+1 97
+2
+1 20
+2
+1 26
+1 20
+2
+3
+1 91
+3
+Sample Output
+
+26
+91
+'''
+
+n = int(input())
+s=[]
+maxi = 0
+
+for i in range(n):
+    
+    li = list(map(int,input().split()))
+    if li[0]==1:
+        maxi = max(maxi,li[1])
+        s.insert(0,(li[1],maxi))
+        
+    elif li[0]==2:
+        s.pop(0)
+        if len(s)!=0:
+            maxi=s[0][1]
+        else:
+            maxi=0
+    else:
+        print(s[0][1])
+        
+        
