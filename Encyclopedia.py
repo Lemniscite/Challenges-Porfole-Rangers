@@ -3002,3 +3002,36 @@ mergeSort(arr)
 print(*arr)
 
 
+## 30-3
+Merge sort alg
+
+def merge(arr1, arr2):
+    master = []
+    i, j = 0, 0
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] <= arr2[j]:
+            master.append(arr1[i])
+            i += 1
+        elif arr2[j] < arr1[i]:
+            master.append(arr2[j])
+            j += 1
+    if i == len(arr1) and j < len(arr2):
+        while j < len(arr2):
+            master.append(arr2[j])
+            j += 1
+    if j == len(arr2) and i < len(arr1):
+        while i < len(arr1):
+            master.append(arr1[i])
+            i += 1
+    return master
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    a1 = merge_sort(arr[:(len(arr)//2)])
+    a2 = merge_sort(arr[(len(arr)//2):])
+    return merge(a1, a2)
+n = input()
+l = list(map(int, input().split()))
+print(*merge_sort(l))
+
+
