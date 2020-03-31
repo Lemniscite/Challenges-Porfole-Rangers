@@ -3037,7 +3037,7 @@ def merge_sort(arr):
 n = input()
 l = list(map(int, input().split()))
 print(*merge_sort(l))
-
+## do refer https://www.hackerrank.com/contests/cohort-5-module-1-4-1-3/challenges/perform-merging/problem
 
 ##30-3
 
@@ -3099,4 +3099,126 @@ for i in range(n):
     else:
         print(s[0][1])
         
+   def conquer(arr,lo,mid,hi):
+    i=lo
+    j=mid+1
+    aux=[]
+    while i<=mid and j<=hi:
+        if arr[i]<arr[j]:
+            aux.append(arr[i])
+            i+=1
+        else:
+            aux.append(arr[j])
+            j+=1
+    if i<=mid:
+        while i<=mid:
+            aux.append(arr[i])
+            i+=1
+    if j<=hi:
+        while j<=mid:
+            aux.append(arr[j])
+            j+=1
+    k=0
+    for blah in range(lo,hi+1):
+        arr[blah]=aux[k]
+        k+=1
+
+    
+def divide(arr,lo,hi):
+    if lo<hi:
+        mid=(lo+hi)//2
+        divide(arr,lo,mid)
+        divide(arr,mid+1,hi)
+        conquer(arr,lo,mid,hi)
         
+        
+        
+n=int(input())
+numbers = list(map(int,input().split()))
+divide(numbers,0,n-1)
+print(*numbers)
+
+
+
+''''
+
+##31-3  
+
+https://www.hackerrank.com/contests/cohort-5-module-1-4-5-1/challenges/
+
+You are given n different numbers and an integer k. Write a program that finds lower bound of k in log(n) time complexity. Lower bound of a number k in a sorted list is the index of first number which is same as k, in case the number is not present, print -1 (here answer is given considering index to be starting from 0)
+
+
+  
+'''
+
+ins = list(map(int,input().split()))
+k = ins[1]
+li = list(map(int,input().split()))
+lower=0
+
+def bin(arr,check):
+    mid=len(arr)//2
+    
+    if arr[0]==check:
+        
+        return li.index(check)
+    
+    if mid<=0:
+        lower = -1
+        return lower
+
+    
+    if arr[mid]==check:
+        
+        return li.index(check)
+    elif arr[mid]>check:
+        return bin(arr[:mid],check)
+    else:
+        return bin(arr[mid:],check)
+                   
+
+print(bin(li,k))     
+
+
+'''
+
+'''
+'''
+Linear Search
+
+Binary Search - Iterative
+
+Given n distinct numbers, implement iterative binary search to check the presence of target number k.
+
+In case k is present among those n numbers, print 1 Else print -1
+'''
+n,k=input().split()
+k = int(k)
+
+l = list(map(int,input().split()))
+
+if k in l:
+    print(1)
+else:
+    print(-1)
+
+### Binary search
+
+def bin(arr,check):
+    mid=len(arr)//2
+       
+    if arr[mid]==check:
+        return arr[mid]
+    elif mid==0:
+		return "Not Present"
+    elif arr[mid]>check:
+        return bin(arr[:mid],check)
+    else:
+        return bin(arr[mid:],check)
+                   
+
+
+print(bin(list(range(10)),11))
+
+
