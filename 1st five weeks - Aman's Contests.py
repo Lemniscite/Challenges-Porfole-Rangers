@@ -116,6 +116,15 @@ if n<=10000:
 else:
     print("Overload")
 
+
+## Or
+'''
+sum - sumofapp
+
+if sum<0:
+	return ...
+'''
+
 #Count char fun game
                 
 s = str(input())
@@ -1764,6 +1773,8 @@ for i in stack:
 
 
 '''
+https://www.hackerrank.com/contests/cohort-5-module-1-3-2-2/challenges/challenge-1d
+
 New Year Celebration is coming near and DG is hosting a party for it, To make sure the party goes well she wants order in the party.There are two counters one of ice-cream and other for Cold-drinks.
 On ice-cream counter the line was formed in form of Queue and on drinks counter the line was formed in order of Stacks.
 
@@ -1820,11 +1831,17 @@ while n >0:
 
     
     elif ins[0]=='4':
-        print(stk [0])
+		if len(stk)>0:
+		
+          print(stk [0])
+		else:
+			print(-1)
     
     elif ins[0]=='3':
-        print(q[0])
-
+		if len(q)>0:
+        	print(q[0])
+		else:
+			print(-1)
     else: ##'5'
         front_q = q.pop(0)
         stk.insert(0,front_q)
@@ -3221,4 +3238,107 @@ def bin(arr,check):
 
 print(bin(list(range(10)),11))
 
+'''1-4
+https://www.hackerrank.com/contests/cohort-5-module-1-4-5-2/challenges
+'''
+'''
+You are given N integers and K, your task is to write a program that prints "1" (without quotes) if there are 2 integers present in the array whose sum is K. Else print "-1" (without quotes).
 
+Input Format
+
+First line contains 2 space separated integers: N & K
+
+Second line contains N space separated integers
+
+Constraints
+
+N<1000000
+
+Output Format
+
+Output 1/-1 depending on the condition
+
+Sample Input 0
+
+100 140
+35 64 45 24 14 66 3 5 48 1 30 9 66 41 67 5 13 28 72 6 65 52 30 17 32 71 31 6 68 21 48 59 2 4 75 5 1 58 69 43 8 21 7 17 63 31 49 31 41 48 52 18 9 66 16 20 46 67 24 58 55 5 62 52 48 9 74 5 30 74 41 63 69 63 53 29 12 39 34 22 42 48 43 61 71 27 30 28 23 9 63 15 26 3 69 41 1 22 34 400
+Sample Output 0
+
+1
+Explanation 0
+
+Here 65 and 75 present in the array sum up to make 140 => Hence output is 1
+'''
+
+
+
+
+
+n,k=list(map(int,input().split()))
+li=list(map(int,input().split()))
+
+li.sort()
+def bin(arr,check):
+    mid=len(arr)//2
+       
+    if arr[mid]==check:
+        return 1
+    elif mid==0:
+        return -1
+    elif arr[mid]>check:
+        return bin(arr[:mid],check)
+    else:
+        return bin(arr[mid:],check)
+                   
+
+def sum(ch):
+    
+    y=0
+    z=0
+    for r in li:
+        z=bin(li,ch-r)
+        if z==1:
+            break
+        
+    return z
+    
+
+print(sum(k))
+        
+
+'''
+
+Lumberjack Bob needs to chop down M metres of wood. However, Bob is only allowed to cut a single row of trees.
+
+Bob's machine works as follows: Bob sets a height parameter H (in metres), and the machine raises a giant sawblade to that height and cuts off all tree parts higher than H (of course, trees not higher than H meters remain intact). Bob then takes the parts that were cut off. 
+
+For example, if the tree row contains trees with heights of 20, 15, 10, and 17 metres, and Bob raises his sawblade to 15 metres, the remaining tree heights after cutting will be 15, 15, 10, and 15 metres, respectively, while Bob will take 5 metres off the first tree and 2 metres off the fourth tree (7 metres of wood in total).
+
+Bob is ecologically minded, so he doesn‟t want to cut off more wood than necessary. That‟s why he wants to set his sawblade as high as possible. Help Bob find the maximum integer height of the sawblade that still allows him to cut off at least M metres of wood.
+'''
+
+  
+  
+n,m=list(map(int,input().split()))
+h=list(map(int,input().split()))
+h.sort()
+
+i=0
+while i>=0:
+    
+    bar=0
+    for x in h:
+        if x>i:
+            bar+=x-i
+            
+    
+    if bar==m:
+        print(i)
+        break
+    else:
+        
+        i+=1
+        
+    
+    
+          
